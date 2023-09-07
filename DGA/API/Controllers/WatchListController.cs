@@ -13,4 +13,22 @@ public class WatchListController : ControllerBase
     {
         _mediator = mediator;
     }
+
+    [HttpPost]
+    public async Task<IActionResult> AddToWatchlist(int userId)
+    {
+        return Ok();
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetWatchlist(int userId)
+    {
+        return Ok();
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> MarkAsWatched(int userId, int movieId)
+    {
+        return Ok();
+    }
 }

@@ -33,10 +33,9 @@ namespace API.Controllers
             return Ok();
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] UpdateMovieCommand command)
+        [HttpPut()]
+        public async Task<IActionResult> Update([FromBody] UpdateMovieCommand command)
         {
-            command.Id = id;
             await _mediator.Send(command);
             return Ok();
         }

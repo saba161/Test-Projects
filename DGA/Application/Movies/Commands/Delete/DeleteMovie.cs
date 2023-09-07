@@ -20,7 +20,7 @@ public class DeleteMovieCommandHandler : IRequestHandler<DeleteMovieCommand>
         
         _context.Movies.Remove(entity);
 
-        entity.AddDomainEvent(new MovieDeleteEvent(entity));
+        entity.RemoveDomainEvent(new MovieDeleteEvent(entity));
 
         await _context.SaveChangesAsync(cancellationToken);
     }
