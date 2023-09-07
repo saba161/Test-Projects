@@ -1,7 +1,7 @@
 using Domain.Common;
 using Domain.Entities;
 
-namespace Domain.Events;
+namespace Domain.Events.MovieEvent;
 
 public class MovieDeleteEvent : BaseEvent
 {

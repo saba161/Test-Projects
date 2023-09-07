@@ -1,5 +1,6 @@
 using Domain.Common;
 using Domain.Events;
+using Domain.Events.MovieEvent;
 
 namespace Domain.Entities;
 

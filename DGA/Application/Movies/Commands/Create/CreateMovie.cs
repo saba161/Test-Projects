@@ -1,6 +1,7 @@
 using Application.Interfaces;
 using Domain.Entities;
 using Domain.Events;
+using Domain.Events.MovieEvent;
 using MediatR;
 
 namespace Application.Movies.Commands.Create;

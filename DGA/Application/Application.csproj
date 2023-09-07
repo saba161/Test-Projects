@@ -25,7 +25,6 @@
 
     <ItemGroup>
       <Folder Include="Common\Models" />
-      <Folder Include="Watchlists\Command\Create" />
       <Folder Include="Watchlists\Command\Delete" />
       <Folder Include="Watchlists\Command\Update" />
       <Folder Include="Watchlists\Query\Read" />

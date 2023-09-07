@@ -1,3 +1,4 @@
+using Application.Watchlists.Command.Create;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,9 +16,10 @@ public class WatchListController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddToWatchlist(int userId)
+    public async Task<IActionResult> AddToWatchlist(CreateWatchListCommand command)
     {
-        return Ok();
+        var result = await _mediator.Send(command);
+        return Ok(result);
     }
 
     [HttpGet]
