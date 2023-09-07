@@ -18,7 +18,11 @@ public class CreateMovieCommandHandler : IRequestHandler<CreateMovieCommand, int
     {
         var entity = new Movie
         {
-            Name = request.Name,
+            Title = request.Title,
+            ReleaseYear = request.ReleaseYear,
+            Genre = request.Genre,
+            Director = request.Director,
+            Rating = request.Rating,
             Description = request.Description,
             Done = false
         };

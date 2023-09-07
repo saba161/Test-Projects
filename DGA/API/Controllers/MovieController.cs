@@ -33,7 +33,7 @@ namespace API.Controllers
             return Ok();
         }
 
-        [HttpPut()]
+        [HttpPut]
         public async Task<IActionResult> Update([FromBody] UpdateMovieCommand command)
         {
             await _mediator.Send(command);
