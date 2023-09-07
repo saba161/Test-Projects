@@ -1,4 +1,5 @@
 using System.Reflection;
+using Application.Mapper;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,5 +11,6 @@ public static class RegisterService
         IConfiguration configuration)
     {
         services.AddMediatR(_ => _.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+        services.AddAutoMapper(typeof(MovieProfile));
     }
 }

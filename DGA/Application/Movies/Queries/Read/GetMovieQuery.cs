@@ -1,15 +1,9 @@
-using Domain.Entities;
+using Application.Movies.Queries.GetMovie;
 using MediatR;
 
-namespace Application.Movies.Queries.GetMovie;
+namespace Application.Movies.Queries.Read;
 
-public record GetMovieQuery : IRequest
+public class GetMovieQuery : IRequest<GetMovieQueryResponse> 
 {
     public int Id { get; set; }
-
-    public string Name { get; set; }
-
-    public string Description { get; set; }
-
-    public List<Watchlist> Watchlists { get; set; }
 }

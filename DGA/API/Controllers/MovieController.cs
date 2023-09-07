@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using Application.Movies.Commands.Create;
 using Application.Movies.Commands.Delete;
 using Application.Movies.Commands.Update;
+using Application.Movies.Queries.GetMovie;
+using Application.Movies.Queries.Read;
 
 namespace API.Controllers
 {
@@ -40,10 +42,11 @@ namespace API.Controllers
             return Ok();
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Get()
+        [HttpGet("{Id}")]
+        public async Task<IActionResult> Get([FromRoute] GetMovieQuery query)
         {
-            return Ok();
+            var response = await _mediator.Send(query);
+            return Ok(response);
         }
     }
 }

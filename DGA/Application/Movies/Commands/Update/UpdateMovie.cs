@@ -18,8 +18,13 @@ public class UpdateMovieCommandHandler : IRequestHandler<UpdateMovieCommand>
     public async Task Handle(UpdateMovieCommand request, CancellationToken cancellationToken)
     {
         var entity = await _context.Movies
-            .FindAsync(new object[] { request.Id }, cancellationToken);
+            .FindAsync(request.Id, cancellationToken);
 
+        if (entity == null)
+        {
+            throw new ArgumentNullException(nameof(entity));
+        }
+        
         _mapper.Map(request, entity);
         entity.LastModified = DateTimeOffset.Now;
         _context.Movies.Update(entity);

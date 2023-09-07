@@ -18,6 +18,11 @@ public class DeleteMovieCommandHandler : IRequestHandler<DeleteMovieCommand>
         var entity = await _context.Movies
             .FindAsync(new object[] { request.Id }, cancellationToken);
         
+        if (entity == null)
+        {
+            throw new ArgumentNullException(nameof(entity));
+        }
+
         _context.Movies.Remove(entity);
 
         entity.RemoveDomainEvent(new MovieDeleteEvent(entity));
