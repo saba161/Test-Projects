@@ -1,9 +1,10 @@
+using Application.Interfaces;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data;
 
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext : DbContext , IApplicationDbContext
 {
     public ApplicationDbContext()
     {
@@ -18,10 +19,11 @@ public class ApplicationDbContext : DbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-            // Configure your database provider here
-            optionsBuilder.UseSqlServer("Server=localhost;Database=Movies;User Id=sa;Password=Password.1;ApplicationIntent=ReadWrite;MultiSubnetFailover=False; TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer(
+                "Server=localhost;Database=Movies;User Id=sa;Password=Password.1;ApplicationIntent=ReadWrite;MultiSubnetFailover=False; TrustServerCertificate=True");
         }
     }
 
     public DbSet<Movie> Movies { get; set; }
+    public DbSet<Watchlist> Watchlists { get; set; }
 }

@@ -1,6 +1,6 @@
 namespace Domain.Common;
 
-public class BaseAuditableEntity
+public class BaseAuditableEntity : BaseEntity
 {
     public DateTimeOffset Created { get; set; }
 
