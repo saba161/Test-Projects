@@ -1,4 +1,7 @@
 using Application.Watchlists.Command.Create;
+using Application.Watchlists.Command.Delete;
+using Application.Watchlists.Command.MarkedWatch;
+using Application.Watchlists.Query.Read;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,21 +19,30 @@ public class WatchListController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddToWatchlist(CreateWatchListCommand command)
+    public async Task<IActionResult> AddToWatchlist([FromBody] CreateWatchListCommand command)
     {
         var result = await _mediator.Send(command);
         return Ok(result);
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetWatchlist(int userId)
+    public async Task<IActionResult> GetWatchlist()
     {
+        await _mediator.Send(new GetWatchListQuery());
+        return Ok();
+    }
+
+    [HttpDelete]
+    public async Task<IActionResult> DeleteFromWatchList(DeleteWatchListCommand command)
+    {
+        await _mediator.Send(command);
         return Ok();
     }
 
     [HttpPut]
-    public async Task<IActionResult> MarkAsWatched(int userId, int movieId)
+    public async Task<IActionResult> MarkAsWatched([FromBody] MarkedWatchlistCommand command)
     {
+        await _mediator.Send(command);
         return Ok();
     }
 }

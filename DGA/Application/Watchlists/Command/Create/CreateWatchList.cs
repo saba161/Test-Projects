@@ -19,7 +19,8 @@ public class CreateWatchListCommandHandler : IRequestHandler<CreateWatchListComm
         var entity = new Watchlist()
         {
             UserID = request.UserId,
-            MovieID = request.MovieId
+            MovieID = request.MovieId,
+            Watch = false
         };
 
         entity.AddDomainEvent(new WatchListCreateEvent(entity));

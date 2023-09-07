@@ -12,5 +12,6 @@ public static class RegisterService
     {
         services.AddMediatR(_ => _.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
         services.AddAutoMapper(typeof(MovieProfile));
+        services.AddAutoMapper(typeof(WatchListProfile));
     }
 }
