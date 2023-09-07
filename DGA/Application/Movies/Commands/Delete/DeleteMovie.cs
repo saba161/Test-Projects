@@ -1,9 +1,8 @@
 using Application.Interfaces;
-using Application.Movies.Commands.CreateMovie;
 using Domain.Events;
 using MediatR;
 
-namespace Application.Movies.Commands.DeleteMovie;
+namespace Application.Movies.Commands.Delete;
 
 public class DeleteMovieCommandHandler : IRequestHandler<DeleteMovieCommand>
 {

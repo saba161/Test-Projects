@@ -3,7 +3,7 @@ using Domain.Entities;
 using Domain.Events;
 using MediatR;
 
-namespace Application.Movies.Commands.CreateMovie;
+namespace Application.Movies.Commands.Create;
 
 public class CreateMovieCommandHandler : IRequestHandler<CreateMovieCommand, int>
 {

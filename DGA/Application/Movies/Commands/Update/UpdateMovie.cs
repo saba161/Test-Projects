@@ -1,7 +1,7 @@
 using Application.Interfaces;
 using MediatR;
 
-namespace Application.Movies.Commands.UpdateMovie;
+namespace Application.Movies.Commands.Update;
 
 public class UpdateMovieCommandHandler : IRequestHandler<UpdateMovieCommand>
 {

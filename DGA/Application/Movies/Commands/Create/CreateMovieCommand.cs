@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace Application.Movies.Commands.CreateMovie;
+namespace Application.Movies.Commands.Create;
 
 public record CreateMovieCommand : IRequest<int>
 {

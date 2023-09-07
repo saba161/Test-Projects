@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace Application.Movies.Commands.UpdateMovie;
+namespace Application.Movies.Commands.Update;
 
 public record UpdateMovieCommand : IRequest
 {
