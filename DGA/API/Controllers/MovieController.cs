@@ -5,6 +5,7 @@ using Application.Movies.Commands.Create;
 using Application.Movies.Commands.Delete;
 using Application.Movies.Commands.Update;
 using Application.Movies.Queries.Read;
+using Application.Movies.Queries.Search;
 
 namespace API.Controllers
 {
@@ -43,6 +44,13 @@ namespace API.Controllers
 
         [HttpGet("{Id}")]
         public async Task<IActionResult> Get([FromRoute] GetMovieQuery query)
+        {
+            var response = await _mediator.Send(query);
+            return Ok(response);
+        }
+
+        [HttpGet("search")]
+        public async Task<IActionResult> SearchMovies([FromQuery] SearchMoviesQuery query)
         {
             var response = await _mediator.Send(query);
             return Ok(response);

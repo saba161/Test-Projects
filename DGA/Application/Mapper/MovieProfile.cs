@@ -1,5 +1,6 @@
 using Application.Movies.Commands.Update;
 using Application.Movies.Queries.Read;
+using Application.Movies.Queries.Search;
 using AutoMapper;
 using Domain.Entities;
 
@@ -11,5 +12,6 @@ public class MovieProfile : Profile
     {
         CreateMap<UpdateMovieCommand, Movie>();
         CreateMap<Movie, GetMovieQueryResponse>();
+        CreateMap<Movie, SearchMoviesQueryResponse>();
     }
 }
