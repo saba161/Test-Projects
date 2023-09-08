@@ -1,6 +1,5 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 using Application.Movies.Commands.Create;
 using Application.Movies.Commands.Delete;
 using Application.Movies.Commands.Update;
