@@ -26,9 +26,9 @@ public class WatchListController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetWatchlist()
+    public async Task<IActionResult> GetWatchlist([FromQuery] GetWatchListQuery query)
     {
-        var response = await _mediator.Send(new GetWatchListQuery());
+        var response = await _mediator.Send(query);
         return Ok(response);
     }
 

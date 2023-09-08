@@ -20,7 +20,8 @@ public class GetWatchListQueryHandler : IRequestHandler<GetWatchListQuery, List<
         CancellationToken cancellationToken)
     {
         var watchListe = _context.Watchlists
-            .Include(x => x.Movie);
+            .Include(x => x.Movie)
+            .Where(x => x.UserID == request.UserId);
 
         var result = watchListe.Select(x => new GetWatchListQueryResponse
         {
