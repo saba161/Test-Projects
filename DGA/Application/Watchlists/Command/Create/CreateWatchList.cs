@@ -1,7 +1,7 @@
 using Application.Interfaces;
-using Application.Movies.Commands.Create;
 using Domain.Entities;
 using Domain.Events.WatchListEvent;
+using FluentValidation;
 using MediatR;
 
 namespace Application.Watchlists.Command.Create;
@@ -17,6 +17,14 @@ public class CreateWatchListCommandHandler : IRequestHandler<CreateWatchListComm
 
     public async Task<int> Handle(CreateWatchListCommand request, CancellationToken cancellationToken)
     {
+        var validator = new CreateWatchListCommandValidator();
+        var validationResult = await validator.ValidateAsync(request, cancellationToken);
+
+        if (!validationResult.IsValid)
+        {
+            throw new ValidationException(validationResult.Errors);
+        }
+
         var entity = new Watchlist()
         {
             UserID = request.UserId,
