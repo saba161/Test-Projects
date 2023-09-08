@@ -2,6 +2,7 @@ using Application.Interfaces;
 using Domain.Entities;
 using Domain.Events;
 using Domain.Events.MovieEvent;
+using FluentValidation;
 using MediatR;
 
 namespace Application.Movies.Commands.Create;
@@ -17,6 +18,14 @@ public class CreateMovieCommandHandler : IRequestHandler<CreateMovieCommand, int
 
     public async Task<int> Handle(CreateMovieCommand request, CancellationToken cancellationToken)
     {
+        var validator = new CreateMovieCommandValidator();
+        var validationResult = await validator.ValidateAsync(request, cancellationToken);
+
+        if (!validationResult.IsValid)
+        {
+            throw new ValidationException(validationResult.Errors);
+        }
+
         var entity = new Movie
         {
             Title = request.Title,

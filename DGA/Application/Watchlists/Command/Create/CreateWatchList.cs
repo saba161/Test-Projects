@@ -1,4 +1,5 @@
 using Application.Interfaces;
+using Application.Movies.Commands.Create;
 using Domain.Entities;
 using Domain.Events.WatchListEvent;
 using MediatR;

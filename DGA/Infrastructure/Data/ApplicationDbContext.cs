@@ -1,5 +1,6 @@
 using Application.Interfaces;
 using Domain.Entities;
+using Infrastructure.Data.Configurations;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data;
@@ -17,9 +18,8 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Watchlist>()
-            .HasIndex(e => new { e.UserID, e.MovieID })
-            .IsUnique();
+        modelBuilder.ApplyConfiguration(new WatchListConfiguration());
+        modelBuilder.ApplyConfiguration(new MovieConfiguration());
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
