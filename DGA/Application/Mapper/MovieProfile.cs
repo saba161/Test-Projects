@@ -1,5 +1,5 @@
 using Application.Movies.Commands.Update;
-using Application.Movies.Queries.GetMovie;
+using Application.Movies.Queries.Read;
 using AutoMapper;
 using Domain.Entities;
 

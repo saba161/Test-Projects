@@ -1,4 +1,4 @@
-namespace Application.Movies.Queries.GetMovie;
+namespace Application.Movies.Queries.Read;
 
 public class GetMovieQueryResponse
 {
@@ -9,8 +9,7 @@ public class GetMovieQueryResponse
     public string Genre { get; set; }
 
     public string Director { get; set; }
-
-
+    
     public decimal Rating { get; set; }
 
     public string Description { get; set; }

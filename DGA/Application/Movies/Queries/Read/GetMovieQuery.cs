@@ -1,4 +1,3 @@
-using Application.Movies.Queries.GetMovie;
 using MediatR;
 
 namespace Application.Movies.Queries.Read;

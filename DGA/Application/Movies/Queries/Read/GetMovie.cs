@@ -1,5 +1,4 @@
 using Application.Interfaces;
-using Application.Movies.Queries.GetMovie;
 using AutoMapper;
 using MediatR;
 

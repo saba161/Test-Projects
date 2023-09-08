@@ -28,8 +28,8 @@ public class WatchListController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetWatchlist()
     {
-        await _mediator.Send(new GetWatchListQuery());
-        return Ok();
+        var response = await _mediator.Send(new GetWatchListQuery());
+        return Ok(response);
     }
 
     [HttpDelete]

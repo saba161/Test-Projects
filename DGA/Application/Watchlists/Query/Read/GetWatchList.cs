@@ -1,12 +1,11 @@
 using Application.Interfaces;
 using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Watchlists.Query.Read;
 
-public class GetWatchListQueryHandler : IRequestHandler<GetWatchListQuery, GetWatchListQueryResponse>
+public class GetWatchListQueryHandler : IRequestHandler<GetWatchListQuery, List<GetWatchListQueryResponse>>
 {
     private readonly IApplicationDbContext _context;
     private readonly IMapper _mapper;
@@ -17,15 +16,18 @@ public class GetWatchListQueryHandler : IRequestHandler<GetWatchListQuery, GetWa
         _mapper = mapper;
     }
 
-    public async Task<GetWatchListQueryResponse> Handle(GetWatchListQuery request,
+    public async Task<List<GetWatchListQueryResponse>> Handle(GetWatchListQuery request,
         CancellationToken cancellationToken)
     {
         var watchListe = _context.Watchlists
             .Include(x => x.Movie);
 
-        var response = _mapper.Map<GetWatchListQueryResponse>(watchListe);
+        var result = watchListe.Select(x => new GetWatchListQueryResponse
+        {
+            UserId = x.UserID,
+            Movie = x.Movie
+        }).ToList();
 
-
-        return response;
+        return result;
     }
 }

@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Application.Movies.Commands.Create;
 using Application.Movies.Commands.Delete;
 using Application.Movies.Commands.Update;
-using Application.Movies.Queries.GetMovie;
 using Application.Movies.Queries.Read;
 
 namespace API.Controllers
