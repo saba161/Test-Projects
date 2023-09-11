@@ -6,12 +6,14 @@ using Application.Blogs.Queries.Search;
 using Domain.Exception.Blog;
 using FluentValidation;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class BlogController : ControllerBase
 {
     private readonly IMediator _mediator;

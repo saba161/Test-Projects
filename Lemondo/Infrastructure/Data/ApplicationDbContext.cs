@@ -1,4 +1,5 @@
 using System.Reflection;
+using Application.Identity;
 using Application.Interfaces;
 using Domain.Entities;
 using Infrastructure.Identity;
