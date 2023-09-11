@@ -1,11 +1,13 @@
+using System.Reflection;
 using Application.Interfaces;
 using Domain.Entities;
-using Infrastructure.Data.Configurations;
+using Infrastructure.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data;
 
-public class ApplicationDbContext : DbContext, IApplicationDbContext
+public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplicationDbContext
 {
     public ApplicationDbContext()
     {
@@ -18,8 +20,9 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfiguration(new WatchListConfiguration());
-        modelBuilder.ApplyConfiguration(new MovieConfiguration());
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+        base.OnModelCreating(modelBuilder);
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -27,10 +30,9 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
         if (!optionsBuilder.IsConfigured)
         {
             optionsBuilder.UseSqlServer(
-                "Server=localhost;Database=Movies;User Id=sa;Password=Password.1;ApplicationIntent=ReadWrite;MultiSubnetFailover=False; TrustServerCertificate=True");
+                "Server=localhost;Database=Blog;User Id=sa;Password=Password.1;ApplicationIntent=ReadWrite;MultiSubnetFailover=False; TrustServerCertificate=True");
         }
     }
-
-    public DbSet<Movie> Movies => Set<Movie>();
-    public DbSet<Watchlist> Watchlists => Set<Watchlist>();
+    
+    public DbSet<Blog> Blogs => Set<Blog>();
 }
